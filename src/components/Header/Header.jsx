@@ -1,9 +1,34 @@
+import { Link, useLocation } from 'react-router-dom';
+import trackmanLogo from '/public/trackman_logo.svg';
 import './_header.scss';
 
 export default function Header() {
+  const { pathname } = useLocation();
+
   return (
     <header className="header">
-      <p>I'm a header</p>
+      <div className="header__logo">
+        <img
+          src={trackmanLogo}
+          alt="Trackman Logo"
+          className="header__logo-image"
+        />
+      </div>
+
+      <nav className="header__nav">
+        <Link
+          to="/"
+          className={`header__link ${pathname === '/' ? 'header__link--active' : ''}`}
+        >
+          Facilities
+        </Link>
+        <Link
+          to="/facility-form"
+          className={`header__link ${pathname === '/facility-form' ? 'header__link--active' : ''}`}
+        >
+          Facility Form
+        </Link>
+      </nav>
     </header>
   );
 }
