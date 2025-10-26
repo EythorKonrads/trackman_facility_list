@@ -1,3 +1,4 @@
+import { Outlet } from 'react-router-dom';
 import Header from './components/Header/Header';
 
 export default function App() {
@@ -5,7 +6,7 @@ export default function App() {
     <div className="app">
       <Header />
       <main className="app__content">
-        <p>I'm the content</p>
+        <Outlet />
       </main>
     </div>
   );
