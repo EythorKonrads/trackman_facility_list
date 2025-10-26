@@ -12,8 +12,8 @@ This project demonstrates a facility management system built with React, develop
 
 ## Prerequisites
 
-- Node.js (v16 or higher)
-- npm (v7 or higher)
+- Node.js (v18.0.0 or higher)
+- npm (v9.0.0 or higher)
 
 ## Installation
 
@@ -58,7 +58,7 @@ npm test
 
 ## Technology Stack
 
-- React 18
+- React 19
 - Vite
 - React Router
 - SCSS for styling
