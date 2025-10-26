@@ -20,7 +20,7 @@ This project demonstrates a facility management system built with React, develop
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/trackman_facility_list.git
+git clone https://github.com/EythorKonrads/trackman_facility_list.git
 cd trackman_facility_list
 ```
 
