@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { generateId } from '../../utils/generateId';
 import { useFacilities } from '../../hooks/useFacilities';
 import './_facility-form.scss';
 
