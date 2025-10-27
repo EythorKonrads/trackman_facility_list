@@ -5,6 +5,7 @@ import App from './App';
 import FacilitiesList from './pages/FacilitiesList/FacilitiesList';
 import FacilityForm from './pages/FacilityForm/FacilityForm';
 import './styles/_css-reset.scss';
+import './styles/_variables.scss';
 import './styles/main.scss';
 
 const router = createBrowserRouter([
