@@ -1,0 +1,93 @@
+.facility-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-height: 290px;
+  height: auto;
+  transition: 0.3s;
+  padding: 0.75rem;
+}
+.facility-card:hover {
+  background-color: #ffffff;
+  box-shadow:
+    0px 6px 12px rgba(12, 12, 13, 0.05),
+    4px 12px 28px rgba(12, 12, 13, 0.1);
+  border-radius: 8px;
+}
+.facility-card__image {
+  position: relative;
+  height: 195px;
+  border-radius: 4px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.facility-card__default {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  width: 2rem;
+  height: auto;
+}
+.facility-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  height: auto;
+  color: #1e1e1e;
+}
+.facility-card__container {
+  display: flex;
+  justify-content: space-between;
+}
+.facility-card__status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  background-color: #ebffee;
+  color: #14ae5c;
+  height: 1.5rem;
+  padding: 0 0.75rem;
+  border-radius: 9999px;
+}
+.facility-card__status--closed {
+  background-color: #fee9e7;
+  color: #ec221f;
+}
+.facility-card__location {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  min-width: 0;
+}
+.facility-card__address {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1 1 auto;
+  min-width: 0;
+  color: #757575;
+}
+.facility-card__buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+.facility-card__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f5f5f5;
+  border-radius: 4px;
+  height: 2rem;
+  transition: 0.3s;
+}
+.facility-card__button:hover {
+  background-color: var(--button-bg-color);
+}
+.facility-card__button--delete {
+  width: 2rem;
+}
+.facility-card__button--edit {
+  padding: 0 1.5rem;
+}
