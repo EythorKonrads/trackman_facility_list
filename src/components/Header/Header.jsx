@@ -1,5 +1,4 @@
 import { Link, useLocation } from 'react-router-dom';
-import trackmanLogo from '/public/trackman_logo.svg';
 import './_header.scss';
 
 export default function Header() {
@@ -9,7 +8,7 @@ export default function Header() {
     <header className="header">
       <div className="header__logo">
         <img
-          src={trackmanLogo}
+          src={import.meta.env.BASE_URL + 'trackman_logo.svg'}
           alt="Trackman Logo"
           className="header__logo-image"
         />
