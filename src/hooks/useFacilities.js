@@ -13,5 +13,15 @@ export function useFacilities() {
     localStorage.setItem('facilities', JSON.stringify(newFacilities));
   };
 
-  return { facilities, addFacility };
+  const updateFacility = (id, updated) => {
+    const newFacilities = facilities.map((facility) => {
+      if (facility.id === id) return updated;
+      return facility;
+    });
+
+    setFacilities(newFacilities);
+    localStorage.setItem('facilities', JSON.stringify(newFacilities));
+  };
+
+  return { facilities, addFacility, updateFacility };
 }

@@ -12,7 +12,7 @@ export default function FacilitiesList() {
       <button
         className="facilities-list__button"
         type="button"
-        onClick={() => navigate('/facility-form')}
+        onClick={() => navigate('/facility/new')}
       >
         Create Facility
       </button>

@@ -14,7 +14,8 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       { index: true, element: <FacilitiesList /> },
-      { path: 'facility-form', element: <FacilityForm /> },
+      { path: 'facility/new', element: <FacilityForm /> },
+      { path: 'facility/edit/:id', element: <FacilityForm /> },
     ],
   },
 ]);

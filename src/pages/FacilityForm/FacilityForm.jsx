@@ -1,20 +1,25 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useFacilities } from '../../hooks/useFacilities';
 import './_facility-form.scss';
 
 export default function FacilityForm() {
-  const [facility, setFacility] = useState({
-    name: '',
-    address: '',
-    description: '',
-    image: '',
-    open: '',
-    close: '',
-    isDefault: false,
-  });
-  const { addFacility } = useFacilities();
   const navigate = useNavigate();
+  const { facilities, addFacility, updateFacility } = useFacilities();
+  const { id } = useParams();
+  const existing = facilities.find((f) => f.id === id);
+
+  const [facility, setFacility] = useState(
+    existing || {
+      name: '',
+      address: '',
+      description: '',
+      image: '',
+      open: '',
+      close: '',
+      isDefault: false,
+    }
+  );
 
   const generateId = () => {
     return Date.now().toString(36) + Math.random().toString(36).substring(2);
@@ -30,7 +35,8 @@ export default function FacilityForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addFacility({ ...facility, id: generateId() });
+    if (existing) updateFacility(existing.id, facility);
+    else addFacility({ ...facility, id: generateId() });
     navigate('/');
   };
 
@@ -104,8 +110,15 @@ export default function FacilityForm() {
             onChange={handleChange}
           />
         </label>
+        <button
+          className="facility-form__cancel"
+          type="button"
+          onClick={() => navigate('/')}
+        >
+          Cancel
+        </button>
         <button type="submit" className="facility-form__submit">
-          Create Facility
+          {existing ? 'Update Facility' : 'Create Facility'}
         </button>
       </form>
     </div>

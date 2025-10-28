@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import './_facility-card.scss';
 
 export default function FacilityCard({ facility }) {
@@ -15,6 +16,8 @@ export default function FacilityCard({ facility }) {
     openMinutes <= closeMinutes
       ? minutesNow >= openMinutes && minutesNow <= closeMinutes
       : minutesNow >= openMinutes || minutesNow <= closeMinutes;
+
+  const navigate = useNavigate();
 
   return (
     <div className="facility-card">
@@ -64,6 +67,7 @@ export default function FacilityCard({ facility }) {
             <button
               className="facility-card__button facility-card__button--edit"
               type="button"
+              onClick={() => navigate(`/facility/edit/${facility.id}`)}
             >
               Edit
             </button>
