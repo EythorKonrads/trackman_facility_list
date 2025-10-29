@@ -18,7 +18,7 @@ export default function Header() {
         <nav className="header__nav">
           <Link
             to="/"
-            className={`header__link ${pathname === '/' ? 'header__link--active' : ''}`}
+            className={`header__link ${pathname === '/' || pathname.startsWith('/facility') ? 'header__link--active' : ''}`}
           >
             Facilities
           </Link>
