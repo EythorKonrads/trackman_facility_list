@@ -1,10 +1,14 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export function useFacilities() {
   const [facilities, setFacilities] = useState(() => {
     const stored = localStorage.getItem('facilities');
     return stored ? JSON.parse(stored) : [];
   });
+
+  useEffect(() => {
+    localStorage.setItem('facilities', JSON.stringify(facilities));
+  }, [facilities]);
 
   const addFacility = (facility) => {
     const newFacilities = [...facilities];
@@ -17,7 +21,6 @@ export function useFacilities() {
 
     newFacilities.push(facility);
     setFacilities(newFacilities);
-    localStorage.setItem('facilities', JSON.stringify(newFacilities));
   };
 
   const updateFacility = (id, updated) => {
@@ -33,7 +36,6 @@ export function useFacilities() {
     }
 
     setFacilities(newFacilities);
-    localStorage.setItem('facilities', JSON.stringify(newFacilities));
   };
 
   const deleteFacility = (id) => {
@@ -46,7 +48,6 @@ export function useFacilities() {
     }
 
     setFacilities(newFacilities);
-    localStorage.setItem('facilities', JSON.stringify(newFacilities));
   };
 
   return { facilities, addFacility, updateFacility, deleteFacility };
