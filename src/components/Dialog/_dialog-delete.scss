@@ -54,7 +54,7 @@
   border: 0;
   line-height: 1.4;
   font-weight: 600;
-  font-size: 0.875rem;
+  font-size: var(--font-size-md);
   cursor: pointer;
 }
 .dialog-delete__button--cancel {
