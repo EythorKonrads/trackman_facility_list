@@ -23,5 +23,12 @@ export function useFacilities() {
     localStorage.setItem('facilities', JSON.stringify(newFacilities));
   };
 
-  return { facilities, addFacility, updateFacility };
+  const deleteFacility = (id) => {
+    let newFacilities = facilities.filter((facility) => facility.id !== id);
+
+    setFacilities(newFacilities);
+    localStorage.setItem('facilities', JSON.stringify(newFacilities));
+  };
+
+  return { facilities, addFacility, updateFacility, deleteFacility };
 }

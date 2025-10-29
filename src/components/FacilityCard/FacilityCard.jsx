@@ -1,7 +1,11 @@
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import DialogDelete from '../Dialog/DialogDelete';
 import './_facility-card.scss';
 
-export default function FacilityCard({ facility }) {
+export default function FacilityCard({ facility, onDelete }) {
+  const [showDeleteDialog, setShowDeleteDialog] = useState(false);
+
   const timeStringToMinutes = (time) => {
     const [h, m] = time.split(':').map(Number);
     return h * 60 + m;
@@ -18,6 +22,11 @@ export default function FacilityCard({ facility }) {
       : minutesNow >= openMinutes || minutesNow <= closeMinutes;
 
   const navigate = useNavigate();
+
+  const handleConfirmDelete = () => {
+    onDelete(facility.id);
+    setShowDeleteDialog(false);
+  };
 
   return (
     <div className="facility-card">
@@ -58,6 +67,7 @@ export default function FacilityCard({ facility }) {
             <button
               className="facility-card__button facility-card__button--delete"
               type="button"
+              onClick={() => setShowDeleteDialog(true)}
             >
               <img
                 src={`${import.meta.env.BASE_URL}delete.svg`}
@@ -74,6 +84,20 @@ export default function FacilityCard({ facility }) {
           </div>
         </div>
       </div>
+      <DialogDelete
+        isOpen={showDeleteDialog}
+        title="Delete Facility"
+        description={
+          <>
+            Are you sure you want to delete this facility? This action cannot be
+            undone.
+            <br />
+            Facility: <span style={{ fontWeight: 700 }}>{facility.name}</span>
+          </>
+        }
+        onClose={() => setShowDeleteDialog(false)}
+        onConfirm={handleConfirmDelete}
+      />
     </div>
   );
 }

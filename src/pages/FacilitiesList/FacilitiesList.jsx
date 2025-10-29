@@ -4,7 +4,7 @@ import FacilityCard from '../../components/FacilityCard/FacilityCard';
 import './_facilities-list.scss';
 
 export default function FacilitiesList() {
-  const { facilities } = useFacilities();
+  const { facilities, deleteFacility } = useFacilities();
   const navigate = useNavigate();
 
   return (
@@ -18,7 +18,11 @@ export default function FacilitiesList() {
       </button>
       <div className="facilities-list__grid">
         {facilities.map((facility) => (
-          <FacilityCard key={facility.id} facility={facility} />
+          <FacilityCard
+            key={facility.id}
+            facility={facility}
+            onDelete={deleteFacility}
+          />
         ))}
       </div>
     </div>
