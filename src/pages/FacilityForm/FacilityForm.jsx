@@ -94,6 +94,9 @@ export default function FacilityForm() {
               name="isDefault"
               checked={facility.isDefault}
               onChange={handleChange}
+              disabled={
+                facilities.length === 0 || (facilities.length === 1 && existing)
+              }
             />
             <p>
               Default Facility <br />
