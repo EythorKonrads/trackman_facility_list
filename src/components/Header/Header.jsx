@@ -22,9 +22,24 @@ export default function Header() {
           >
             Facilities
           </Link>
-          <span className="header__link">Locations</span>
-          <span className="header__link">Players</span>
-          <span className="header__link">Access Management</span>
+          <Link
+            to="/locations"
+            className={`header__link ${pathname === '/locations' ? 'header__link--active' : ''}`}
+          >
+            Locations
+          </Link>
+          <Link
+            to="/players"
+            className={`header__link ${pathname === '/players' ? 'header__link--active' : ''}`}
+          >
+            Players
+          </Link>
+          <Link
+            to="/access-management"
+            className={`header__link ${pathname === '/access-management' ? 'header__link--active' : ''}`}
+          >
+            Access Management
+          </Link>
         </nav>
       </div>
     </header>
