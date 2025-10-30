@@ -104,7 +104,7 @@ export default function FacilityForm() {
           <label className="facility-form__label">
             Cover Image URL *
             <input
-              type="text"
+              type="url"
               name="image"
               value={facility.image}
               onChange={handleChange}
