@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import './_dialog-delete.scss';
 
 export default function DialogDelete({
@@ -22,7 +23,7 @@ export default function DialogDelete({
 
   if (!isOpen) return null;
 
-  return (
+  const dialog = (
     <div
       className="dialog-delete__overlay"
       role="presentation"
@@ -74,4 +75,10 @@ export default function DialogDelete({
       </div>
     </div>
   );
+
+  // Render overlay at the end of document.body so it's not affected by
+  // parent transforms/overflow (fixes sizing and positioning issues).
+  return typeof document !== 'undefined'
+    ? createPortal(dialog, document.body)
+    : dialog;
 }
