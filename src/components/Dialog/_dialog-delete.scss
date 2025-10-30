@@ -38,11 +38,6 @@
   background-color: var(--separator-color);
   margin: 0 -0.75rem 0 -0.75rem;
 }
-.dialog-delete__body {
-  color: var(--text-color);
-  font-size: 0.95rem;
-  line-height: 1.4;
-}
 .dialog-delete__footer {
   display: flex;
   justify-content: flex-end;
@@ -68,16 +63,4 @@
 .dialog-delete__button--close {
   padding: 0.5rem;
   background-color: var(--button-bg-color-secondary);
-}
-
-@media (max-width: 420px) {
-  .dialog-delete {
-    padding: 1rem;
-  }
-  .dialog-delete__title {
-    font-size: 1rem;
-  }
-  .dialog-delete__button {
-    font-size: 0.9rem;
-  }
 }
