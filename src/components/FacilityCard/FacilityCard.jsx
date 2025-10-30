@@ -85,7 +85,14 @@ export default function FacilityCard({ facility, onDelete }) {
               alt="location icon"
               loading="lazy"
             />
-            <p className="facility-card__address">{facility.address}</p>
+            <a
+              className="facility-card__address"
+              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(facility.address)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {facility.address}
+            </a>
           </div>
           <div className="facility-card__buttons">
             <button

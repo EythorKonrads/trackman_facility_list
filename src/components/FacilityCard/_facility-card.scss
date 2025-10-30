@@ -21,7 +21,7 @@
 .facility-card__temp-image {
   position: absolute;
   opacity: 0;
-  pointer-events: 'none';
+  pointer-events: none;
 }
 .facility-card__background {
   width: 100%;
@@ -81,6 +81,12 @@
   flex: 1 1 auto;
   min-width: 0;
   color: var(--text-color-secondary);
+  cursor: pointer;
+  text-decoration: none;
+  transition: 0.3s;
+}
+.facility-card__address:hover {
+  color: inherit;
 }
 .facility-card__buttons {
   display: flex;
