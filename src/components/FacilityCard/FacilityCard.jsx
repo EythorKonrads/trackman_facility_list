@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import DialogDelete from '../Dialog/DialogDelete';
 import './_facility-card.scss';
@@ -7,6 +7,8 @@ export default function FacilityCard({ facility, onDelete }) {
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
   const [imageError, setImageError] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const timerRef = useRef(null);
 
   const fallbackImage = `${import.meta.env.BASE_URL}broken-image.png`; // or use a broken image icon
 
@@ -28,16 +30,26 @@ export default function FacilityCard({ facility, onDelete }) {
   const navigate = useNavigate();
 
   const handleConfirmDelete = () => {
-    onDelete(facility.id);
     setShowDeleteDialog(false);
+    setIsDeleting(true);
+    timerRef.current = setTimeout(() => {
+      onDelete(facility.id);
+    }, 350);
   };
 
+  useEffect(() => {
+    return () => {
+      if (timerRef.current) clearTimeout(timerRef.current);
+    };
+  }, []);
+
   return (
-    <div className="facility-card">
+    <div
+      className={`facility-card ${isDeleting ? 'facility-card--deleting' : ''}`}
+    >
       <div
         className={`facility-card__image ${imageLoaded ? 'facility-card__image--loaded' : ''}`}
         role="img"
-        aria-label={facility.name}
       >
         <img
           className="facility-card__temp-image"
@@ -99,6 +111,7 @@ export default function FacilityCard({ facility, onDelete }) {
               className="facility-card__button facility-card__button--delete"
               type="button"
               onClick={() => setShowDeleteDialog(true)}
+              disabled={isDeleting}
             >
               <img
                 src={`${import.meta.env.BASE_URL}delete.svg`}
@@ -110,6 +123,7 @@ export default function FacilityCard({ facility, onDelete }) {
               className="facility-card__button facility-card__button--edit"
               type="button"
               onClick={() => navigate(`/facility/edit/${facility.id}`)}
+              disabled={isDeleting}
             >
               Edit
             </button>
