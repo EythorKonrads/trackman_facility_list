@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useFacilities } from '../../hooks/useFacilities';
 import './_facility-form.scss';
@@ -21,6 +21,9 @@ export default function FacilityForm() {
     }
   );
 
+  const [isAnimating, setIsAnimating] = useState(false);
+  const formRef = useRef(null);
+
   const generateId = () => {
     return Date.now().toString(36) + Math.random().toString(36).substring(2);
   };
@@ -34,19 +37,39 @@ export default function FacilityForm() {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    if (e?.preventDefault) e.preventDefault();
     if (existing) updateFacility(existing.id, facility);
     else addFacility({ ...facility, id: generateId() });
     navigate('/');
   };
 
+  const onFormSubmit = (e) => {
+    e.preventDefault();
+    if (isAnimating) return;
+    const formEl = formRef.current;
+    if (formEl && !formEl.checkValidity()) {
+      formEl.reportValidity();
+      return;
+    }
+    setIsAnimating(true);
+    setTimeout(() => {
+      handleSubmit();
+      setIsAnimating(false);
+    }, 700);
+  };
+
   return (
-    <div className="facility-form" onSubmit={handleSubmit}>
+    <div className="facility-form">
       <h1 className="facility-form__title">
         {' '}
         {existing ? 'Edit Facility' : 'Create new facility'}
       </h1>
-      <form action="" className="facility-form__form">
+      <form
+        action=""
+        className="facility-form__form"
+        onSubmit={onFormSubmit}
+        ref={formRef}
+      >
         <div className="facility-form__group">
           <h2 className="facility-form__group-title">Facility Information</h2>
           <label className="facility-form__label">
@@ -142,9 +165,16 @@ export default function FacilityForm() {
           </button>
           <button
             type="submit"
-            className="facility-form__button facility-form__button--submit"
+            className={`facility-form__button facility-form__button--submit ${
+              isAnimating ? 'is-animating' : ''
+            }`}
+            disabled={isAnimating}
           >
-            {existing ? 'Update Facility' : 'Create Facility'}
+            {isAnimating
+              ? 'Form saved'
+              : existing
+                ? 'Update Facility'
+                : 'Create Facility'}
           </button>
         </div>
       </form>
