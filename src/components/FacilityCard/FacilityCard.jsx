@@ -5,6 +5,10 @@ import './_facility-card.scss';
 
 export default function FacilityCard({ facility, onDelete }) {
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const [imageError, setImageError] = useState(false);
+
+  const fallbackImage = `${import.meta.env.BASE_URL}broken-image.png`; // or use a broken image icon
 
   const timeStringToMinutes = (time) => {
     const [h, m] = time.split(':').map(Number);
@@ -31,11 +35,29 @@ export default function FacilityCard({ facility, onDelete }) {
   return (
     <div className="facility-card">
       <div
-        className="facility-card__image"
-        style={{ backgroundImage: `url(${facility.image})` }}
+        className={`facility-card__image ${imageLoaded ? 'facility-card__image--loaded' : ''}`}
         role="img"
         aria-label={facility.name}
       >
+        <img
+          className="facility-card__temp-image"
+          src={facility.image || fallbackImage}
+          alt={facility.name}
+          loading="lazy"
+          onLoad={() => setImageLoaded(true)}
+          onError={() => {
+            setImageError(true);
+            setImageLoaded(true);
+          }}
+        />
+        {imageLoaded && (
+          <div
+            className={`facility-card__background ${imageError ? 'facility-card__background--fallback' : ''}`}
+            style={{
+              backgroundImage: `url(${imageError ? fallbackImage : facility.image || fallbackImage})`,
+            }}
+          />
+        )}
         {facility.isDefault && (
           <img
             className="facility-card__default"
