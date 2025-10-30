@@ -8,12 +8,20 @@ export default function Header() {
     <header className="header">
       <div className="header__container">
         <div className="header__logo">
-          <img
-            className="header__logo-image"
-            src={import.meta.env.BASE_URL + 'trackman_logo.svg'}
-            alt="Trackman Logo"
-            loading="lazy"
-          />
+          <Link to="/">
+            <img
+              className="header__logo-image header__logo-image--mobile"
+              src={import.meta.env.BASE_URL + 'favicon/favicon.ico'}
+              alt="Trackman Favicon"
+              loading="lazy"
+            />
+            <img
+              className="header__logo-image header__logo-image--desktop"
+              src={import.meta.env.BASE_URL + 'trackman_logo.svg'}
+              alt="Trackman Logo"
+              loading="lazy"
+            />
+          </Link>
         </div>
 
         <nav className="header__nav">
