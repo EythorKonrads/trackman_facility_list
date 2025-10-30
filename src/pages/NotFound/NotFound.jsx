@@ -12,7 +12,7 @@ const NotFound = () => {
         alt="404"
         loading="lazy"
       />
-      <h2>Look like you're lost</h2>
+      <h2>Looks like you're lost</h2>
       <p className="not-found__text">
         The page you are looking for not avaible!
       </p>
