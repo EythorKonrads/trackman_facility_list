@@ -16,15 +16,24 @@ export default function FacilitiesList() {
       >
         Create Facility
       </button>
-      <div className="facilities-list__grid">
-        {facilities.map((facility) => (
-          <FacilityCard
-            key={facility.id}
-            facility={facility}
-            onDelete={deleteFacility}
-          />
-        ))}
-      </div>
+      {facilities.length === 0 ? (
+        <div className="facilities-list__empty">
+          <h2>No facilities yet.</h2>
+          <p>
+            Press the "Create Facility" button above to add your first facility.
+          </p>
+        </div>
+      ) : (
+        <div className="facilities-list__grid">
+          {facilities.map((facility) => (
+            <FacilityCard
+              key={facility.id}
+              facility={facility}
+              onDelete={deleteFacility}
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 }

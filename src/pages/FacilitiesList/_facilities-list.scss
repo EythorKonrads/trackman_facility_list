@@ -10,6 +10,15 @@
   background-color: var(--button-bg-color);
   color: var(--button-text-color);
 }
+.facilities-list__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: var(--font-size-lg);
+  text-align: center;
+  color: var(--text-color);
+  margin: 4rem 2rem;
+}
 .facilities-list__grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 0.333fr));
