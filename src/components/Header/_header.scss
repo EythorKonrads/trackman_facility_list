@@ -9,7 +9,7 @@
   justify-content: flex-start;
   align-items: center;
   gap: 2rem;
-  max-width: calc(1200px + 2rem);
+  max-width: calc(var(--max-content-width) + 2rem);
   width: 100%;
   padding: 1rem;
 }
@@ -18,10 +18,10 @@
   gap: 2rem;
 }
 .header__link {
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
   color: var(--link-color);
   text-decoration: none;
-  font-size: 1rem;
+  font-size: var(--font-size-lg);
   transition: 0.3s;
   line-height: 1.4;
   cursor: pointer;

@@ -12,7 +12,7 @@
   box-shadow:
     0px 6px 12px rgba(12, 12, 13, 0.05),
     4px 12px 28px rgba(12, 12, 13, 0.1);
-  border-radius: 8px;
+  border-radius: var(--border-radius-md);
 }
 .facility-card__image {
   position: relative;
@@ -29,7 +29,7 @@
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  border-radius: 4px;
+  border-radius: var(--border-radius-sm);
 }
 .facility-card__background--fallback {
   background-size: contain;
@@ -47,7 +47,7 @@
   flex-direction: column;
   gap: 4px;
   height: auto;
-  color: #1e1e1e;
+  color: var(--text-color);
 }
 .facility-card__container {
   display: flex;
@@ -57,16 +57,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.875rem;
-  background-color: #ebffee;
-  color: #14ae5c;
+  font-size: var(--font-size-md);
+  background-color: var(--success-bg-color);
+  color: var(--success-color);
   height: 1.5rem;
   padding: 0 0.75rem;
-  border-radius: 9999px;
+  border-radius: var(--border-radius-lg);
 }
 .facility-card__status--closed {
-  background-color: #fee9e7;
-  color: #ec221f;
+  background-color: var(--error-bg-color);
+  color: var(--error-color);
 }
 .facility-card__location {
   display: flex;
@@ -96,8 +96,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #f5f5f5;
-  border-radius: 4px;
+  background-color: var(--button-bg-color-secondary);
+  border-radius: var(--border-radius-sm);
   height: 2rem;
   transition: 0.3s;
 }

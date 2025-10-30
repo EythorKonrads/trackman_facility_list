@@ -2,13 +2,13 @@ body {
   min-height: 100vh;
   scroll-behavior: smooth;
   text-rendering: optimizeSpeed;
-  line-height: 1.5;
-  font-family: 'Inter', sans-serif;
-  font-weight: 400;
+  line-height: 1.4;
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-normal);
   background-color: var(--secondary-bg-color);
 }
 .app__content {
-  max-width: calc(1200px + 2rem);
+  max-width: calc(var(--max-content-width) + 2rem);
   margin: 0 auto;
   margin: 2rem auto;
 }

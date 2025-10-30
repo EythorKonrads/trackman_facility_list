@@ -18,12 +18,26 @@
 
   --input-border-color: #b3b3b3;
 
-  //   Fonts
-  --font-family: 'Inter', sans-serif;
+  --success-color: #14ae5c;
+  --success-bg-color: var(--button-text-color);
+  --error-color: #ec221f;
+  --error-bg-color: #fee9e7;
+
+  // Fonts
+  --font-family-primary: 'Inter', sans-serif;
+  --font-family-secondary: Nunito, sans-serif;
   --font-size-xl: 1.5rem;
   --font-size-lg: 1rem;
   --font-size-md: 0.875rem;
   --font-size-sm: 0.75rem;
   --font-weight-normal: 400;
-  --font-weight-bold: 700;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+
+  // Sizing
+  --max-content-width: 1200px;
+
+  --border-radius-lg: 9999px;
+  --border-radius-md: 8px;
+  --border-radius-sm: 4px;
 }
