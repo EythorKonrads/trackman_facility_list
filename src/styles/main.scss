@@ -7,6 +7,27 @@ body {
   font-weight: var(--font-weight-normal);
   background-color: var(--secondary-bg-color);
 }
+button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1.5rem;
+  border: 0;
+  border-radius: var(--border-radius-sm);
+  background-color: var(--button-bg-color-secondary);
+  color: var(--text-color);
+  line-height: 1.4;
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-md);
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
 .app__content {
   max-width: calc(var(--max-content-width) + 2rem);
   margin: 0 auto;
