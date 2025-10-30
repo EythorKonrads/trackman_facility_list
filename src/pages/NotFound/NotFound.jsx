@@ -10,6 +10,7 @@ const NotFound = () => {
       <img
         src="https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif"
         alt="404"
+        loading="lazy"
       />
       <h2>Look like you're lost</h2>
       <p className="not-found__text">

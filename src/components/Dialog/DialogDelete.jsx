@@ -34,6 +34,7 @@ export default function DialogDelete({
             <img
               src={`${import.meta.env.BASE_URL}close.svg`}
               alt="Close icon"
+              loading="lazy"
             />
           </button>
         </header>

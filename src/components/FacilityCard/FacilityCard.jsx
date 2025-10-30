@@ -41,6 +41,7 @@ export default function FacilityCard({ facility, onDelete }) {
             className="facility-card__default"
             src={`${import.meta.env.BASE_URL}default_facility.svg`}
             alt="Default facility"
+            loading="lazy"
           />
         )}
       </div>
@@ -60,6 +61,7 @@ export default function FacilityCard({ facility, onDelete }) {
             <img
               src={`${import.meta.env.BASE_URL}location.svg`}
               alt="location icon"
+              loading="lazy"
             />
             <p className="facility-card__address">{facility.address}</p>
           </div>
@@ -72,6 +74,7 @@ export default function FacilityCard({ facility, onDelete }) {
               <img
                 src={`${import.meta.env.BASE_URL}delete.svg`}
                 alt="delete icon"
+                loading="lazy"
               />
             </button>
             <button

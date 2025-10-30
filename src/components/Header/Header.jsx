@@ -9,9 +9,10 @@ export default function Header() {
       <div className="header__container">
         <div className="header__logo">
           <img
+            className="header__logo-image"
             src={import.meta.env.BASE_URL + 'trackman_logo.svg'}
             alt="Trackman Logo"
-            className="header__logo-image"
+            loading="lazy"
           />
         </div>
 
