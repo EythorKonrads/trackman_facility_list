@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import './_dialog-delete.scss';
 
 export default function DialogDelete({
@@ -10,6 +10,15 @@ export default function DialogDelete({
 }) {
   const dialogRef = useRef(null);
   const cancelRef = useRef(null);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [isOpen]);
 
   if (!isOpen) return null;
 
