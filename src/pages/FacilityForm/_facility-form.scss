@@ -112,6 +112,29 @@
 }
 .facility-form__label input[type='time'] {
   width: 100%;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  height: auto;
+  padding: 0.5rem;
+  font-family: inherit;
+  font-size: var(--font-size-sm);
+  line-height: 1;
+  border: 1px solid var(--input-border-color);
+  border-radius: var(--border-radius-sm);
+}
+.facility-form__label input[type='time']::-webkit-datetime-edit,
+.facility-form__label input[type='time']::-webkit-datetime-edit-fields-wrapper,
+.facility-form__label input[type='time']::-webkit-datetime-edit-text {
+  padding: 0;
+  line-height: 1;
+}
+.facility-form__label input[type='time']::-webkit-inner-spin-button,
+.facility-form__label input[type='time']::-webkit-clear-button,
+.facility-form__label input[type='time']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  display: none;
 }
 .facility-form__time {
   display: flex;
