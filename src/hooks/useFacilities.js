@@ -1,9 +1,16 @@
 import { useState, useEffect } from 'react';
 
+const sortByDefault = (facilities) => {
+  return facilities.sort(
+    (a, b) => (b.isDefault ? 1 : 0) - (a.isDefault ? 1 : 0)
+  );
+};
+
 export function useFacilities() {
   const [facilities, setFacilities] = useState(() => {
     const stored = localStorage.getItem('facilities');
-    return stored ? JSON.parse(stored) : [];
+    const parsed = stored ? JSON.parse(stored) : [];
+    return sortByDefault(parsed);
   });
 
   useEffect(() => {
@@ -20,7 +27,7 @@ export function useFacilities() {
     }
 
     newFacilities.push(facility);
-    setFacilities(newFacilities);
+    setFacilities(sortByDefault(newFacilities));
   };
 
   const updateFacility = (id, updated) => {
@@ -35,7 +42,7 @@ export function useFacilities() {
       });
     }
 
-    setFacilities(newFacilities);
+    setFacilities(sortByDefault(newFacilities));
   };
 
   const deleteFacility = (id) => {
@@ -47,7 +54,7 @@ export function useFacilities() {
       newFacilities[0].isDefault = true;
     }
 
-    setFacilities(newFacilities);
+    setFacilities(sortByDefault(newFacilities));
   };
 
   return { facilities, addFacility, updateFacility, deleteFacility };
