@@ -1,0 +1,15 @@
+{
+  "name": "trackman",
+  "compatibility_date": "2026-11-01",
+  // The site only lives on its own domain; PR previews get their own URLs
+  "workers_dev": false,
+  "preview_urls": true,
+  "routes": [
+    { "pattern": "trackman.eythorkonrads.com", "custom_domain": true },
+  ],
+  "assets": {
+    "directory": "./dist",
+    // Client-side routes: unknown paths get index.html
+    "not_found_handling": "single-page-application",
+  },
+}
